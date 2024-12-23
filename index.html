@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Greeting</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #2b5876, #4e4376);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎄 Happy New Year 2025! 🎄</h1>
+        <p>Пусть ваш код будет без ошибок, а жизнь без багов!</p>
+        <p>Желаем вдохновения, успехов и невероятных достижений!</p>
+        <p>✨ С Новым годом! ✨</p>
+    </div>
+
+    <div class="snow">
+        <!-- Snowflakes dynamically generated with JavaScript -->
+    </div>
+
+    <script>
+        const snowContainer = document.querySelector('.snow');
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+
+            const size = Math.random() * 10 + 5;
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+
+            snowflake.style.left = `${Math.random() * window.innerWidth}px`;
+            snowflake.style.animationDuration = `${Math.random() * 3 + 5}s`;
+            snowflake.style.opacity = Math.random();
+
+            snowContainer.appendChild(snowflake);
+
+            setTimeout(() => snowflake.remove(), 8000);
+        }
+
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
